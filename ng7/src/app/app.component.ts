@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TommydataService  } from "./shared/tommydata.service";
+import { TommydataService } from "./shared/tommydata.service";
 
 
 @Component({
@@ -10,11 +10,14 @@ import { TommydataService  } from "./shared/tommydata.service";
 export class AppComponent implements OnInit {
   title = 'ng7';
 
+  my_todo_list: any;
 
   constructor(private service: TommydataService) { }
 
   ngOnInit() {
-    this.service.getTommyData().subscribe( data => {
+    this.service.getTommyData().subscribe(data => {
+      this.my_todo_list = data;
+      this.title = "Got The Data"
       console.log(data)
     })
   }
